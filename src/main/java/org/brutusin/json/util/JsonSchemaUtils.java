@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.util;
+package org.brutusin.json.util;
 
-import org.brutusin.commons.json.spi.JsonNode;
+import org.brutusin.json.spi.JsonNode;
 
 /**
  *

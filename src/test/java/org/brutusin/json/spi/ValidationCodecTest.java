@@ -13,9 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.spi;
+package org.brutusin.json.spi;
 
-import org.brutusin.commons.json.ValidationException;
+import org.brutusin.json.spi.JsonCodec;
+import org.brutusin.json.spi.JsonSchema;
+import org.brutusin.json.spi.JsonNode;
+import org.brutusin.json.ValidationException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

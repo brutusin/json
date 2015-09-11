@@ -13,26 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json;
+package org.brutusin.json.spi;
 
-import java.util.List;
+import org.brutusin.json.ValidationException;
 
 /**
  *
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-public class ValidationException extends Exception {
+public interface JsonSchema extends JsonNode{
 
-    private final List<String> messages;
-
-    public ValidationException(List<String> messages) {
-        if (messages == null || messages.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        this.messages = messages;
-    }
-
-    public List<String> getMessages() {
-        return messages;
-    }
+    public void validate(JsonNode node) throws ValidationException;
+    
+    public Type getSchemaType();
+    
+    public JsonSchema getPropertySchema(String property);
+    
+    public JsonSchema getItemSchema();
+    
+    public JsonSchema getAdditionalPropertySchema();
 }

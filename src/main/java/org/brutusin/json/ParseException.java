@@ -13,46 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.spi;
-
-import java.util.Iterator;
+package org.brutusin.json;
 
 /**
  *
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-public interface JsonNode {
+public class ParseException extends Exception{
 
-    public enum Type {
-
-        OBJECT,
-        ARRAY,
-        BOOLEAN,
-        NULL,
-        INTEGER,
-        NUMBER,
-        STRING,
-        ANY
+    public ParseException() {
     }
 
-    public Type getNodeType();
+    public ParseException(String message) {
+        super(message);
+    }
 
-    public Boolean asBoolean();
+    public ParseException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-    public Integer asInteger();
-
-    public Long asLong();
-
-    public Double asDouble();
-
-    public String asString();
-
-    public int getSize();
-
-    public JsonNode get(int i);
-
-    public Iterator<String> getProperties();
-
-    public JsonNode get(String property);
-
+    public ParseException(Throwable cause) {
+        super(cause);
+    }
 }

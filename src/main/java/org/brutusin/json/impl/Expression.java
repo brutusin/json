@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.impl;
+package org.brutusin.json.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import org.brutusin.commons.json.ParseException;
-import org.brutusin.commons.json.spi.JsonCodec;
-import org.brutusin.commons.json.spi.JsonNode;
-import org.brutusin.commons.json.spi.JsonSchema;
-import org.brutusin.commons.json.util.JsonNodeVisitor;
+import org.brutusin.json.ParseException;
+import org.brutusin.json.spi.JsonCodec;
+import org.brutusin.json.spi.JsonNode;
+import org.brutusin.json.spi.JsonSchema;
+import org.brutusin.json.util.JsonNodeVisitor;
 import org.brutusin.commons.utils.Miscellaneous;
 
 /**

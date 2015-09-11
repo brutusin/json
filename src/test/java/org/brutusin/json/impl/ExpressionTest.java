@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.impl;
+package org.brutusin.json.impl;
 
-import org.brutusin.commons.json.ParseException;
-import org.brutusin.commons.json.spi.JsonCodec;
-import org.brutusin.commons.json.spi.JsonNode;
-import org.brutusin.commons.json.spi.JsonSchema;
+import org.brutusin.json.impl.Expression;
+import org.brutusin.json.ParseException;
+import org.brutusin.json.spi.JsonCodec;
+import org.brutusin.json.spi.JsonNode;
+import org.brutusin.json.spi.JsonSchema;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;

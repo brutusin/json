@@ -13,21 +13,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.spi;
+package org.brutusin.json.spi;
 
-import org.brutusin.commons.json.ParseException;
+import java.util.Iterator;
 
 /**
+ *
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-public interface JsonSchemaCodec {
+public interface JsonNode {
 
-    public JsonSchema getSchema(Class clazz);
+    public enum Type {
 
-    public String getSchemaString(Class clazz);
+        OBJECT,
+        ARRAY,
+        BOOLEAN,
+        NULL,
+        INTEGER,
+        NUMBER,
+        STRING,
+        ANY
+    }
 
-    public String getSchemaString(Class<?> clazz, String title, String description);
+    public Type getNodeType();
 
-    public JsonSchema parseSchema(String json) throws ParseException;
+    public Boolean asBoolean();
+
+    public Integer asInteger();
+
+    public Long asLong();
+
+    public Double asDouble();
+
+    public String asString();
+
+    public int getSize();
+
+    public JsonNode get(int i);
+
+    public Iterator<String> getProperties();
+
+    public JsonNode get(String property);
 
 }

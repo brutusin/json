@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.spi;
+package org.brutusin.json.spi;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ServiceLoader;
-import org.brutusin.commons.json.ParseException;
-import org.brutusin.commons.json.impl.Expression;
+import org.brutusin.json.ParseException;
+import org.brutusin.json.impl.Expression;
 
 /**
  * Decouples application logic from JSON parsing providers.

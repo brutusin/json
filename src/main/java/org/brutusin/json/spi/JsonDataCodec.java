@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.spi;
+package org.brutusin.json.spi;
 
-import org.brutusin.commons.json.ParseException;
+import org.brutusin.json.ParseException;
 
 /**
  * @author Ignacio del Valle Alles idelvall@brutusin.org

@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.brutusin.commons.json.spi;
+package org.brutusin.json.spi;
 
 import java.util.Map;
-import org.brutusin.commons.json.annotations.IndexableProperty;
-import org.brutusin.commons.json.annotations.JsonProperty;
+import org.brutusin.json.annotations.IndexableProperty;
+import org.brutusin.json.annotations.JsonProperty;
 
 /**
  *
