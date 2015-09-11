@@ -18,7 +18,7 @@ If you are not using maven and need help you can ask [here](https://github.com/b
 [JSON SPI](src/main/java/org/brutusin/commons/json/spi) is a service provider interface ([SPI](http://en.wikipedia.org/wiki/Service_provider_interface)) that defines all the JSON-related functionality needed by the rest of Brutusin modules, allowing to use different pluggable implementations (service providers) and decoupling client modules from them. 
 
 #### Supported annotations
-The followong annotations can be used to customize schema generation, and must be supported by all providers:
+The following annotations can be used to customize schema generation, and must be supported by all providers:
 * [`@JsonProperty`](src/main/java/org/brutusin/commons/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
 * [`@IndexableProperty`](src/main/java/org/brutusin/commons/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 
