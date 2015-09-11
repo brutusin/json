@@ -6,14 +6,15 @@
   - [Maven dependency](#maven-dependency)
   - [APIs](#apis)
     - [JsonCodec](#jsoncodec)
+  - [Class model](#class-model)
   - [Data](#data)
-    - [Object-JsonNode binding]
+    - [Object-JsonNode binding](#object-jsonnode-binding)
   - [Schema](#schema)
-    - [Class-JsonSchema binding]
+    - [Class-JsonSchema binding](#class-jsonschema-binding)
     - [Data validation](#data-validation)
     - [JSON Schema extension](#json-schema-extension)
-  - [Path expressions]
-    - [Projections] 
+  - [Path expressions](#path-expressions)
+    - [Projections] (#projections)
 
 ##Maven dependency 
 ```xml
