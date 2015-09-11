@@ -15,7 +15,6 @@
  */
 package org.brutusin.json.impl;
 
-import org.brutusin.json.impl.Expression;
 import org.brutusin.json.ParseException;
 import org.brutusin.json.spi.JsonCodec;
 import org.brutusin.json.spi.JsonNode;
@@ -28,7 +27,7 @@ import static org.junit.Assert.*;
  *
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-public class ExpressionTest {
+public abstract class ExpressionTest {
 
     private static JsonNode node;
     private static JsonSchema schemaNode;

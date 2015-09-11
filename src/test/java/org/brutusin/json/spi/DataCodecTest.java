@@ -15,7 +15,6 @@
  */
 package org.brutusin.json.spi;
 
-import org.brutusin.json.spi.JsonCodec;
 import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
