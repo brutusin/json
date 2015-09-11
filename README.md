@@ -1,5 +1,20 @@
 #org.brutusin:json [![Build Status](https://api.travis-ci.org/brutusin/json.svg?branch=master)](https://travis-ci.org/brutusin/commons) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/)
 
+**Table of Contents:** 
+
+- [org.brutusin:json](#)
+  - [Maven dependency](#maven-dependency)
+  - [APIs](#apis)
+    - [JsonCodec](#jsoncodec)
+  - [Data](#data)
+    - [Object-JsonNode binding]
+  - [Schema](#schema)
+    - [Class-JsonSchema binding]
+    - [Data validation](#data-validation)
+    - [JSON Schema extension](#json-schema-extension)
+  - [Path expressions]
+    - [Projections] 
+
 ##Maven dependency 
 ```xml
 <dependency>
