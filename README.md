@@ -1,5 +1,4 @@
-#org.brutusin:commons [![Build Status](https://api.travis-ci.org/brutusin/commons.svg?branch=master)](https://travis-ci.org/brutusin/commons) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/commons/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/commons/)
-Common utilities project. General purpose functionality used by other projects.
+#org.brutusin:json [![Build Status](https://api.travis-ci.org/brutusin/json.svg?branch=master)](https://travis-ci.org/brutusin/commons) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/)
 
 ##Maven dependency 
 ```xml
@@ -9,9 +8,10 @@ Common utilities project. General purpose functionality used by other projects.
     <version>${json.version}</version>
 </dependency>
 ```
-Click [here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.brutusin%22%20a%3A%22commons%22) to see the latest available version released to the Maven Central Repository.
 
-If you are not using maven and need help you can ask [here](https://github.com/brutusin/commons/issues).
+Click [here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.brutusin%22%20a%3A%22json%22) to see the latest available version released to the Maven Central Repository.
+
+If you are not using maven and need help you can ask [here](https://github.com/brutusin/json/issues).
 
 ## JSON SPI
 
