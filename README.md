@@ -39,6 +39,8 @@ If you are not using maven and need help you can ask [here](https://github.com/b
 ```java
 JsonCodec.getInstance()
 ```
+##Main features
+
 
 #### Supported annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
