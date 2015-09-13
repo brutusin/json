@@ -20,7 +20,11 @@ Under development
     - [JSON Schema extension](#json-schema-extension)
   - [Path expressions](#path-expressions)
     - [Projections] (#projections)
-
+  - [Examples](#examples)
+  - [Support, bugs and requests](#support-bugs-and-requests)
+  - [Authors](#authors)
+  - [License](#license)
+  
 ##Maven dependency 
 ```xml
 <dependency>
