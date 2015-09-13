@@ -39,6 +39,8 @@ If you are not using maven and need help you can ask [here](https://github.com/b
 ```java
 JsonCodec.getInstance()
 ```
+##Class model
+![Class diagram](docs/class-model.png)
 ##Main features
 
 
