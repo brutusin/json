@@ -4,12 +4,13 @@ Under development
 
 #org.brutusin:json [![Build Status](https://api.travis-ci.org/brutusin/json.svg?branch=master)](https://travis-ci.org/brutusin/json) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/)
 
+`org.brutusin:json` is a service provider interface ([SPI](http://en.wikipedia.org/wiki/Service_provider_interface)) that aggregates all the JSON-related functionality needed by the rest of Brutusin modules, allowing to use different pluggable implementations (service providers) and decoupling client modules from them. 
+
 **Table of Contents:** 
 
 - [org.brutusin:json](#)
   - [Maven dependency](#maven-dependency)
-  - [APIs](#apis)
-    - [JsonCodec](#jsoncodec)
+  - [JsonCodec](#jsoncodec)
   - [Class model](#class-model)
   - [Data](#data)
     - [Object-JsonNode binding](#object-jsonnode-binding)
@@ -33,9 +34,11 @@ Click [here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.brutusin%22%2
 
 If you are not using maven and need help you can ask [here](https://github.com/brutusin/json/issues).
 
-## JSON SPI
-
-[JSON SPI](src/main/java/org/brutusin/json/spi) is a service provider interface ([SPI](http://en.wikipedia.org/wiki/Service_provider_interface)) that defines all the JSON-related functionality needed by the rest of Brutusin modules, allowing to use different pluggable implementations (service providers) and decoupling client modules from them. 
+##JsonCodec
+[JsonCodec](src/main/java/org/brutusin/json/spi/JsonCodec.java) is the single entry point to the framework. It defines a SPI (service provider interface) that is implemented by pluggable service providers. Clients of the service make use of the service but calling:
+```java
+JsonCodec.getInstance()
+```
 
 #### Supported annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
