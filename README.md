@@ -17,7 +17,7 @@ This module defines the general contract required to any implementing JSON servi
   - [Data](#data)
   - [JSON Schema](#json-schema)
     - [Data validation](#data-validation)
-    - [JSON Schema extension](#json-schema-extension)
+  - [Java Annotations](#java-annotations)
   - [Path expressions](#path-expressions)
     - [Projections] (#projections)
   - [Service providers](#service-providers)
@@ -57,8 +57,7 @@ Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin
 ###Validation
 Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
 
-JSON
-#### Supported annotations
+## Java Annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
