@@ -49,6 +49,7 @@ JsonCodec.getInstance()
 ##Data
 Data methods declared in `JsonDataCodec` offer *Object/JSON binding* (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
 ##Schema
+[JSON Schema](http://json-schema.org/) is a JSON document that describes the structure of other JSON documents. Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (Class/Json schema binding via `getSchema(Class<T> clazz)`)
 
 #### Supported annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
