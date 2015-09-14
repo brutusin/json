@@ -43,9 +43,10 @@ If you are not using maven and need help you can ask [here](https://github.com/b
 ```java
 JsonCodec.getInstance()
 ```
+`JsonCodec` provides three types of operations: Data operations (inherited from [JsonDataCodec](src/main/java/org/brutusin/json/spi/JsonDataCodec.java)), schema operations (inherited from [JsonSchemaCodec](src/main/java/org/brutusin/json/spi/JsonSchemaCodec.java)) and path expression operations (via `compile(String expression)`)
 ##Class model
 ![Class diagram](docs/class-model.png)
-##Main features
+##Data
 
 
 #### Supported annotations
