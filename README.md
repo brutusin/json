@@ -22,7 +22,7 @@ This module defines the general contract required to any implementing JSON servi
     - [Projections] (#projections)
   - [Service providers](#service-providers)
     - [Reference implementation](#reference-implementation)
-    - [Validation tests for implementing providers](#validation-tests-for-implementing-providers)
+    - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
   - [Support, bugs and requests](#support-bugs-and-requests)
   - [Authors](#authors)
   - [License](#license)
@@ -55,6 +55,7 @@ A JSON schema ([specifications](http://json-schema.org/)) is a JSON document tha
 
 Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (`getSchema(Class<T> clazz)`).
 ###Validation
+Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
 
 JSON
 #### Supported annotations
@@ -62,7 +63,7 @@ The following annotations can be used to customize schema generation, and must b
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 
-#### Validation tests for implementing providers
+#### JUnit tests for implementing providers
 
 Add the following dependency to the provider pom:
 ```xml
