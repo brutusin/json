@@ -20,7 +20,7 @@ Under development
     - [JSON Schema extension](#json-schema-extension)
   - [Path expressions](#path-expressions)
     - [Projections] (#projections)
-  - [Examples](#examples)
+  - [Running example](#running-example)
   - [Support, bugs and requests](#support-bugs-and-requests)
   - [Authors](#authors)
   - [License](#license)
@@ -47,7 +47,8 @@ JsonCodec.getInstance()
 ##Class model
 ![Class diagram](docs/class-model.png)
 ##Data
-
+Data methods declared in `JsonDataCodec` offer *Object/JSON binding* (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
+##Schema
 
 #### Supported annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
