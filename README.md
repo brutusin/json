@@ -81,7 +81,7 @@ and
 [predefined tests](https://github.com/brutusin/json/tree/master/src/test/java/org/brutusin/json/spi) have to be extended by the service provider tests.
 
 ### Reference implementation
-[org.brutusin:json-codec-jackson](https://github.com/brutusin/json-codec-jackson)
+See [org.brutusin:json-codec-jackson](https://github.com/brutusin/json-codec-jackson) for a reference implementation.
 
 ## Examples
 
