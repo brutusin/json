@@ -22,6 +22,7 @@ This module defines the general contract required to any implementing JSON servi
   - [Service providers](#service-providers)
     - [Reference implementation](#reference-implementation)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
+  - [Examples](#examples)
   - [Support, bugs and requests](#support-bugs-and-requests)
   - [Authors](#authors)
   - [License](#license)
