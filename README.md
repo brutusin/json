@@ -23,6 +23,7 @@ This module defines the general contract required to any implementing JSON servi
     - [Reference implementation](#reference-implementation)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
   - [Examples](#examples)
+  - [ToDos](#todos)
   - [Support, bugs and requests](#support-bugs-and-requests)
   - [Authors](#authors)
   - [License](#license)
@@ -80,6 +81,9 @@ See also:
 * [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details.
 * [json-codec-jackson](https://github.com/brutusin/json-codec-jackson), the default JSON service provider.
 
+##ToDos
+* Standard annotations also for data binding (not only for schema customization), supporting property ordering, ignoring properties...
+* Since annotation inheritance is not allowed in java, introduce some mechanism for schema extension (allowing non-standard schema properties) to be used by the service providers. This also would help to move `@IndexableProperty` (aimed at being used by `org.brutuisn:flea-db`) out of this module.
 ## Support bugs and requests
 https://github.com/brutusin/json/issues
 
