@@ -65,7 +65,7 @@ The following annotations can be used to customize schema generation, and must b
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 
 ## Service Providers
-Service providers are modules implementing this SPI and registering themselves via the [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) standard way. 
+Service providers are modules implementing this SPI and registering themselves via the [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) standard facility. 
 ### JUnit tests for implementing providers
 All service providers must pass the JUnit tests included in this module. In order to that, the following maven dependence has to be included
 ```xml
