@@ -4,7 +4,9 @@ Under development
 
 #org.brutusin:json [![Build Status](https://api.travis-ci.org/brutusin/json.svg?branch=master)](https://travis-ci.org/brutusin/json) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/)
 
-`org.brutusin:json` is a service provider interface ([SPI](http://en.wikipedia.org/wiki/Service_provider_interface)) that aggregates all the JSON-related functionality needed by the rest of Brutusin modules, allowing to use different pluggable implementations (service providers) and decoupling client modules from them. 
+`org.brutusin:json` is a service provider interface ([SPI](http://en.wikipedia.org/wiki/Service_provider_interface)) that aggregates all the JSON-related functionality needed by the rest of Brutusin modules.
+
+This module defines the general contract required to any implementing JSON service provider, allowing to use different pluggable implementations and decoupling client modules from them. 
 
 **Table of Contents:** 
 
@@ -19,6 +21,7 @@ Under development
   - [Path expressions](#path-expressions)
     - [Projections] (#projections)
   - [Running example](#running-example)
+  - [Reference implementation] (#reference-implementation)
   - [Support, bugs and requests](#support-bugs-and-requests)
   - [Authors](#authors)
   - [License](#license)
@@ -46,11 +49,13 @@ JsonCodec.getInstance()
 ![Class diagram](docs/class-model.png)
 ##Data
 Data methods declared in `JsonDataCodec` offer **Object/JSON binding** (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
-#JSON Schema
+##JSON Schema
 A JSON schema ([specifications](http://json-schema.org/)) is a JSON document that describes the structure of other JSON documents. 
 
 Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (`getSchema(Class<T> clazz)`).
+###Validation
 
+JSON
 #### Supported annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
