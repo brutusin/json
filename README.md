@@ -20,8 +20,8 @@ This module defines the general contract required to any implementing JSON servi
       - [Projections] (#projections)
   - [Java Annotations](#java-annotations)
   - [Service providers](#service-providers)
-    - [Reference implementation](#reference-implementation)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
+    - [Reference implementation](#reference-implementation)
   - [Examples](#examples)
   - [ToDos](#todos)
   - [Support, bugs and requests](#support-bugs-and-requests)
@@ -63,9 +63,9 @@ The following annotations can be used to customize schema generation, and must b
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 
-#### JUnit tests for implementing providers
-
-Add the following dependency to the provider pom:
+## Service Providers
+### JUnit tests for implementing providers
+All service providers must pass the JUnit tests included in this module. In order to that, the following maven dependence has to be included
 ```xml
 <dependency>
      <groupId>org.brutusin</groupId>
@@ -75,7 +75,10 @@ Add the following dependency to the provider pom:
      <scope>test</scope>
 </dependency>
 ```
-in order to extend the [predefined tests](https://github.com/brutusin/json/tree/master/src/test/java/org/brutusin/json/spi) and verify they are passed. 
+and 
+[predefined tests](https://github.com/brutusin/json/tree/master/src/test/java/org/brutusin/json/spi) have to be extended by the service provider tests.
+
+### Reference implementation
 
 See also:
 * [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details.
