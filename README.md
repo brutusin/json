@@ -13,9 +13,7 @@ Under development
   - [JsonCodec](#jsoncodec)
   - [Class model](#class-model)
   - [Data](#data)
-    - [Object-JsonNode binding](#object-jsonnode-binding)
-  - [Schema](#schema)
-    - [Class-JsonSchema binding](#class-jsonschema-binding)
+  - [JSON Schema](#json-schema)
     - [Data validation](#data-validation)
     - [JSON Schema extension](#json-schema-extension)
   - [Path expressions](#path-expressions)
@@ -47,11 +45,11 @@ JsonCodec.getInstance()
 ##Class model
 ![Class diagram](docs/class-model.png)
 ##Data
-Data methods declared in `JsonDataCodec` offer *Object/JSON binding* (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
-##Schema
+Data methods declared in `JsonDataCodec` offer **Object/JSON binding** (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
+#JSON Schema
 A JSON schema ([specifications](http://json-schema.org/)) is a JSON document that describes the structure of other JSON documents. 
 
-Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (Class/Json schema binding via `getSchema(Class<T> clazz)`)
+Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (`getSchema(Class<T> clazz)`).
 
 #### Supported annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
