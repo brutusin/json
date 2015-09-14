@@ -12,14 +12,13 @@ This module defines the general contract required to any implementing JSON servi
 
 - [org.brutusin:json](#)
   - [Maven dependency](#maven-dependency)
-  - [JsonCodec](#jsoncodec)
-  - [Class model](#class-model)
-  - [Data](#data)
-  - [JSON Schema](#json-schema)
-    - [Data validation](#data-validation)
+  - [SPI](#spi)
+    - [Data](#data)
+    - [JSON Schema](#json-schema)
+      - [Data validation](#data-validation)
+    - [Path expressions](#path-expressions)
+      - [Projections] (#projections)
   - [Java Annotations](#java-annotations)
-  - [Path expressions](#path-expressions)
-    - [Projections] (#projections)
   - [Service providers](#service-providers)
     - [Reference implementation](#reference-implementation)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
@@ -40,21 +39,21 @@ Click [here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.brutusin%22%2
 
 If you are not using maven and need help you can ask [here](https://github.com/brutusin/json/issues).
 
-##JsonCodec
+##SPI
 [JsonCodec](src/main/java/org/brutusin/json/spi/JsonCodec.java) is the single entry point to the framework. It defines a SPI (service provider interface) that is implemented by pluggable service providers. Clients of the service make use of it by calling:
 ```java
 JsonCodec.getInstance()
 ```
 `JsonCodec` provides three types of operations: Data operations (inherited from [JsonDataCodec](src/main/java/org/brutusin/json/spi/JsonDataCodec.java)), schema operations (inherited from [JsonSchemaCodec](src/main/java/org/brutusin/json/spi/JsonSchemaCodec.java)) and path expression operations (via `compile(String expression)`)
-##Class model
+
 ![Class diagram](docs/class-model.png)
-##Data
+###Data
 Data methods declared in `JsonDataCodec` offer **Object/JSON binding** (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
-##JSON Schema
+###JSON Schema
 A JSON schema ([specifications](http://json-schema.org/)) is a JSON document that describes the structure of other JSON documents. 
 
 Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (`getSchema(Class<T> clazz)`).
-###Validation
+####Validation
 Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
 
 ## Java Annotations
