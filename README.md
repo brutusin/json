@@ -21,7 +21,6 @@ This module defines the general contract required to any implementing JSON servi
   - [Service providers](#service-providers)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
     - [Reference implementation](#reference-implementation)
-  - [Examples](#examples)
   - [ToDos](#todos)
   - [See also](#see-also)
   - [Support, bugs and requests](#support-bugs-and-requests)
@@ -86,8 +85,6 @@ and
 
 ### Reference implementation
 See [org.brutusin:json-provider](https://github.com/brutusin/json-provider) for a reference implementation.
-
-## Examples
 
 ##ToDos
 * Standard annotations also for data binding (not only for schema customization), supporting property ordering, ignoring properties...
