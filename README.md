@@ -17,7 +17,6 @@ This module defines the general contract required to any implementing JSON servi
     - [JSON Schema](#json-schema)
       - [Data validation](#data-validation)
     - [Path expressions](#path-expressions)
-      - [Projections] (#projections)
   - [Java Annotations](#java-annotations)
   - [Service providers](#service-providers)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
