@@ -98,7 +98,7 @@ and
 [predefined tests](https://github.com/brutusin/json/tree/master/src/test/java/org/brutusin/json/spi) have to be extended by the service provider tests.
 
 ### Reference implementation
-See [org.brutusin:json-codec-jackson](https://github.com/brutusin/json-codec-jackson) for a reference implementation.
+See [org.brutusin:json-provider](https://github.com/brutusin/json-provider) for a reference implementation.
 
 ## Examples
 
@@ -108,7 +108,7 @@ See [org.brutusin:json-codec-jackson](https://github.com/brutusin/json-codec-jac
 
 ##See also
 * [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details.
-* [json-codec-jackson](https://github.com/brutusin/json-codec-jackson), the default JSON service provider.
+* [org.brutusin:json-provider](https://github.com/brutusin/json-provider), the default JSON service provider.
 
 ## Support bugs and requests
 https://github.com/brutusin/json/issues
