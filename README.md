@@ -62,6 +62,8 @@ Schemas are useful both for describing the structure and for validating `JsonSch
 ###Path expressions
 Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. Implementing providers must ensure expressions are supported both for data and schema documents.
 
+No expression semantics are imposed by this SPI, leaving service providers all freedom in the election of the DSL.
+
 ## Java Annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
