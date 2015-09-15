@@ -60,21 +60,7 @@ Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin
 Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
 
 ###Path expressions
-Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. 
-
-Despite of the existence of `JsonPointer` ([?] https://tools.ietf.org/html/rfc6901) as a standard alternative, this specification is still very inmature and provides only basic traversal expressions.
-
-Instead this module defines its own expression semantics, supporting both data, and schema projections (wildcard expressions evaluating to multiple nodes), and also keeping explicit information of the schema structure.
-
-Case | Expression
------| -----------------
-Root node| `$`
-Simple property| `$.id`
-Nested property| `$.header.id`
-Array/Collection property| `$.items[#]`
-Map property (additionalProperty in schema)| `$.map` for keys and `$.map[*]` for values
-
-
+Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. Implementing providers must ensure expressions are supported both for data and schema documents.
 
 ## Java Annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
