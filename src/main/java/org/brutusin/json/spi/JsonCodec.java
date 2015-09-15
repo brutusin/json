@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ServiceLoader;
 import org.brutusin.json.ParseException;
-import org.brutusin.json.impl.Expression;
 
 /**
  * Decouples application logic from JSON parsing providers.
@@ -81,9 +80,7 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec {
         }
     }
     
-    public final Expression compile(String expression){
-        return Expression.compile(expression);
-    }
+    public abstract Expression compile(String expression);
 
     public static JsonCodec getInstance() {
         return instance;
