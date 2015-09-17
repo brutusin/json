@@ -14,8 +14,29 @@ import java.lang.annotation.Target;
 public @interface JsonProperty {
 
     public String title() default "";
+
     public String description() default "";
+
     public boolean required() default false;
+
+    /**
+     * Json expression of the default value
+     * @return 
+     */
     public String defaultJsonExp() default "";
+
+    /**
+     * Json array expression of the list of allowed values
+     *
+     * @return
+     */
     public String values() default "";
+    
+    /**
+     * Name of the public method static in the class hierarchy returning a dynamic
+     * (runtime) list of allowed values. Takes precedence over values()
+     *
+     * @return
+     */
+    public String valuesMethod() default "";
 }

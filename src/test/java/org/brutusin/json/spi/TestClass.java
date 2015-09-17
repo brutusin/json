@@ -15,7 +15,10 @@
  */
 package org.brutusin.json.spi;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import org.brutusin.json.annotations.DependentProperty;
 import org.brutusin.json.annotations.IndexableProperty;
 import org.brutusin.json.annotations.JsonProperty;
 
@@ -25,10 +28,11 @@ import org.brutusin.json.annotations.JsonProperty;
  */
 class TestClass {
 
-    @JsonProperty(required = true, description = "A string", title = "a title", defaultJsonExp = "3", values = "[\"2\",\"4\"]")
+    @JsonProperty(required = true, description = "A string", title = "a title", defaultJsonExp = "3", valuesMethod = "getStringValues")
     private String string;
 
     @IndexableProperty
+    @DependentProperty(dependsOn = {"bolArr", "string"})
     @JsonProperty(required = true, description = "A aint", title = "a title aint", defaultJsonExp = "3")
     private Integer aint;
 
@@ -36,6 +40,12 @@ class TestClass {
     private boolean[] bolArr;
 
     private Map<String, Boolean> booleanMap;
+
+    private TestClass2 tc;
+
+    public static List getStringValues() {
+        return Arrays.asList(new String[]{"2", "4"});
+    }
 
     public Map<String, Boolean> getBooleanMap() {
         return booleanMap;
@@ -67,5 +77,27 @@ class TestClass {
 
     public void setString(String string) {
         this.string = string;
+    }
+
+    public TestClass2 getTc() {
+        return tc;
+    }
+
+    public void setTc(TestClass2 tc) {
+        this.tc = tc;
+    }
+
+    private class TestClass2 {
+
+        @JsonProperty(values = "[\"aaa\",\"bbb\"]")
+        private String s;
+
+        public String getS() {
+            return s;
+        }
+
+        public void setS(String s) {
+            this.s = s;
+        }
     }
 }

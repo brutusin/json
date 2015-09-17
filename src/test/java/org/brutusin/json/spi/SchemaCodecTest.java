@@ -15,8 +15,6 @@
  */
 package org.brutusin.json.spi;
 
-import org.brutusin.json.spi.JsonCodec;
-import org.brutusin.json.spi.JsonNode;
 import org.brutusin.json.ParseException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,6 +58,8 @@ public abstract class SchemaCodecTest {
         assertTrue(schemaStr.contains("default\":3"));
         assertTrue(schemaStr.contains("\"enum\":[\"2\",\"4\"]"));
         assertTrue(schemaStr.contains("\"default\":[true,true]"));
+        assertTrue(schemaStr.contains("\"enum\":[\"aaa\",\"bbb\"]"));
+        assertTrue(schemaStr.contains("\"dependsOn\":[\"bolArr\",\"string\"]"));
         
         System.out.println(schemaStr);
     }
