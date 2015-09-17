@@ -59,9 +59,13 @@ Path expressions allow referencing JSON data and schema subparts and traversing 
 No expression semantics are imposed by this SPI, leaving service providers all freedom in the election of the DSL.
 
 ## Java Annotations
+### Schema generation annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
+**Standard schema properties:**
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
+**Custom schema properties:**
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
+* [`@DependentProperty`](src/main/java/org/brutusin/json/annotations/DependentProperty.java). Adds custom `"dependsOn":<property name array>` properties to the schema generated.
 
 ## Service Providers
 Service providers are modules implementing this SPI and registering themselves via the [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) standard facility. 
@@ -84,7 +88,7 @@ See [org.brutusin:json-provider](https://github.com/brutusin/json-provider) for 
 
 ##ToDos
 * Standard annotations also for data binding (not only for schema customization), supporting property ordering, ignoring properties...
-* Since annotation inheritance is not allowed in java, introduce some mechanism for schema extension (allowing non-standard schema properties) to be used by the service providers. This also would help to move `@IndexableProperty` (aimed at being used by `org.brutuisn:flea-db`) out of this module.
+* Since annotation inheritance is not allowed in java, introduce some mechanism for schema extension (allowing non-standard schema properties) to be used by the service providers. This also would help to move `@IndexableProperty` (aimed at being used by `org.brutuisn:flea-db`) and `@DependentProperty` out of this module.
 
 ##See also
 * [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details.
