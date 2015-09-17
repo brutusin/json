@@ -63,6 +63,7 @@ No expression semantics are imposed by this SPI, leaving service providers all f
 The following annotations can be used to customize schema generation, and must be supported by all providers:
 **Standard schema properties:**
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like, default value, enumeration, title, description,...
+
 **Custom schema properties:**
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 * [`@DependentProperty`](src/main/java/org/brutusin/json/annotations/DependentProperty.java). Adds custom `"dependsOn":<property name array>` properties to the schema generated.
