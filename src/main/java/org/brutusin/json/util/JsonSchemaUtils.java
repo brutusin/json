@@ -15,7 +15,11 @@
  */
 package org.brutusin.json.util;
 
+import java.util.Iterator;
+import org.brutusin.json.ParseException;
+import org.brutusin.json.spi.JsonCodec;
 import org.brutusin.json.spi.JsonNode;
+import org.brutusin.json.spi.JsonSchema;
 
 /**
  *
@@ -68,5 +72,49 @@ public class JsonSchemaUtils {
             return type;
         }
     }
-
+    
+    /**
+     * 
+     * @param clazz
+     * @param required
+     * @param values
+     * @return 
+     */
+    public static JsonSchema createSchema(Class clazz, String title, String description, boolean required, Object values) {
+        JsonSchema schema = JsonCodec.getInstance().getSchema(clazz);
+        StringBuilder sb = new StringBuilder("{");
+        Iterator<String> properties = schema.getProperties();
+        while (properties.hasNext()) {
+            String prop = properties.next();
+            if (prop.equals("required") || prop.equals("enum")) {
+                continue;
+            }
+            if (sb.length() > 1) {
+                sb.append(",");
+            }
+            sb.append("\"").append(prop).append("\"").append(":").append(schema.get(prop));
+        }
+        if (title!=null) {
+            sb.append(",");
+            sb.append("\"").append("title").append("\"").append(":").append("\"").append(title).append("\"");
+        }
+        if (description!=null) {
+            sb.append(",");
+            sb.append("\"").append("description").append("\"").append(":").append("\"").append(description).append("\"");
+        }
+        if (required) {
+            sb.append(",");
+            sb.append("\"").append("required").append("\"").append(":").append("true");
+        }
+        if (values != null) {
+            sb.append(",");
+            sb.append("\"").append("enum").append("\"").append(":").append(JsonCodec.getInstance().transform(values));
+        }
+        sb.append("}");
+        try {
+            return JsonCodec.getInstance().parseSchema(sb.toString());
+        } catch (ParseException ex) {
+            throw new AssertionError(ex);
+        }
+    }
 }
