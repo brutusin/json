@@ -56,7 +56,7 @@ Schemas are useful both for describing the structure and for validating `JsonSch
 ###Path expressions
 Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. 
 
-This module defines its own expression semantics, supporting data and schema projections (wildcard expressions evaluating to multiple nodes), and also keeping explicit information of the schema structure, what is useful to validate that a reusable expression is applied to a node of the same structure that the original one (this is the main point for not adopting [JsonPath](https://github.com/jayway/JsonPath) semantics).
+This module defines its own expression semantics, supporting data and schema projections (wildcard expressions evaluating to multiple nodes), and also keeping explicit information of the schema structure, being useful to validate that a reusable expression is applied to a node of the same structure that the original one (this is the main point for not adopting [JsonPath](https://github.com/jayway/JsonPath) semantics).
 
 | Operator                  | Applied to JsonNode  | Applied to JsonSchema
 | :------------------------ | :------------------- |:-------------------- |
