@@ -9,7 +9,7 @@
     <groupId>org.brutusin</groupId>
     <artifactId>json</artifactId>
     <packaging>jar</packaging>   
-    <version>1.0.2</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Brutusin common utilities</description>
     
