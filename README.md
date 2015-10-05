@@ -56,7 +56,7 @@ Schemas are useful both for describing the structure and for validating `JsonSch
 ###Path expressions
 Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. 
 
-This module defines its own expression semantics, supporting data and schema projections (wildcard expressions evaluating to multiple nodes), and also keeping explicit information of the schema structure, what is useful to validate that a reusable expression is applied to a node of the same structure that the original one (this is the main point for not adopting [JsonPath](https://github.com/jayway/JsonPath) semantics).
+This module defines its own expression semantics, supporting data and schema projections (wildcard expressions evaluating to multiple nodes), and also keeping explicit information of the schema structure, being useful to validate that a reusable expression is applied to a node of the same structure that the original one (this is the main point for not adopting [JsonPath](https://github.com/jayway/JsonPath) semantics).
 
 | Operator                  | Applied to JsonNode  | Applied to JsonSchema
 | :------------------------ | :------------------- |:-------------------- |
@@ -103,8 +103,7 @@ See [org.brutusin:json-provider](https://github.com/brutusin/json-provider) for 
 ##ToDos
 * Standard annotations also for data binding (not only for schema customization), supporting property ordering, ignoring properties...
 * Since annotation inheritance is not allowed in java, introduce some mechanism for schema extension (allowing non-standard schema properties) to be used by the service providers. This also would help to move `@IndexableProperty` (aimed at being used by `org.brutuisn:flea-db`) and `@DependentProperty` out of this module.
-* Path expressions:
-  * Add more features similar to those in [XPath](https://en.wikipedia.org/wiki/XPath) like: 
+* Path expressions: Add more features similar to those in [XPath](https://en.wikipedia.org/wiki/XPath) like: 
   * Filters
   * Functions 
 
