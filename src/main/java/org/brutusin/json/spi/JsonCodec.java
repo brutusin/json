@@ -79,8 +79,10 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec {
             throw new RuntimeException(ex);
         }
     }
-    
-    public abstract Expression compile(String expression);
+
+    public final Expression compile(String expression) {
+        return Expression.compile(expression);
+    }
 
     public static JsonCodec getInstance() {
         return instance;
