@@ -103,8 +103,7 @@ See [org.brutusin:json-provider](https://github.com/brutusin/json-provider) for 
 ##ToDos
 * Standard annotations also for data binding (not only for schema customization), supporting property ordering, ignoring properties...
 * Since annotation inheritance is not allowed in java, introduce some mechanism for schema extension (allowing non-standard schema properties) to be used by the service providers. This also would help to move `@IndexableProperty` (aimed at being used by `org.brutuisn:flea-db`) and `@DependentProperty` out of this module.
-* Path expressions:
-  * Add more features similar to those in [XPath](https://en.wikipedia.org/wiki/XPath) like: 
+* Path expressions: Add more features similar to those in [XPath](https://en.wikipedia.org/wiki/XPath) like: 
   * Filters
   * Functions 
 
