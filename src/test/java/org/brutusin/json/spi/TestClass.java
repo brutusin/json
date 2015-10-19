@@ -32,6 +32,15 @@ class TestClass {
     private String string;
     
     private transient String nonSerializableString = "nonSerializableString";
+    private transient boolean nonSerializableBoolean = true;
+
+    public boolean isNonSerializableBoolean() {
+        return nonSerializableBoolean;
+    }
+
+    public void setNonSerializableBoolean(boolean nonSerializableBoolean) {
+        this.nonSerializableBoolean = nonSerializableBoolean;
+    }
 
     @IndexableProperty
     @DependentProperty(dependsOn = {"bolArr", "string"})
