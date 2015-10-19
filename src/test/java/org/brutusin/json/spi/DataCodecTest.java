@@ -61,5 +61,14 @@ public abstract class DataCodecTest {
         TestClass instance2 = JsonCodec.getInstance().parse(json, TestClass.class);
         String json2 = JsonCodec.getInstance().transform(instance2);
         assertEquals(json, json2);
+        assertEquals(instance.getAint(), instance2.getAint());
+    }
+    
+    @Test
+    public void testTransientNonSerialization() throws Exception {
+        TestClass instance = new TestClass();
+        String json = JsonCodec.getInstance().transform(instance);
+        System.out.println(json);
+        assert(!json.contains("nonSerializable"));
     }
 }

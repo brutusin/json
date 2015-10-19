@@ -30,6 +30,8 @@ class TestClass {
 
     @JsonProperty(required = true, description = "A string", title = "a title", defaultJsonExp = "3", valuesMethod = "getStringValues")
     private String string;
+    
+    private transient String nonSerializableString = "nonSerializableString";
 
     @IndexableProperty
     @DependentProperty(dependsOn = {"bolArr", "string"})
@@ -47,6 +49,14 @@ class TestClass {
         return Arrays.asList(new String[]{"2", "4"});
     }
 
+    public String getNonSerializableString() {
+        return nonSerializableString;
+    }
+
+    public void setNonSerializableString(String nonSerializableString) {
+        this.nonSerializableString = nonSerializableString;
+    }
+    
     public Map<String, Boolean> getBooleanMap() {
         return booleanMap;
     }
