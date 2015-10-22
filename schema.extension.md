@@ -1,4 +1,4 @@
-# "$schema":"http://brutusin.org/json"
+# `"$schema":"http://brutusin.org/json"`
 
 This document defines some extensions to the http://json-schema.org/draft-03/schema JSON schema version used by Brutusin modules 
 
