@@ -1,3 +1,8 @@
+---
+title: This is my title
+layout: post
+---
+
 This document defines the extensions to the http://json-schema.org/draft-03/schema JSON schema version supported by this module.
 
 ##Path expressions
