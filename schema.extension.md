@@ -6,5 +6,7 @@ This document the extensions supported by this module to the http://json-schema.
 |**`index`**|
 |**`dependsOn`**|
 ## Additional formats for `string` schemas:
-**`file`**
-**`dependsOn`** 
+|Format value|Description
+|--------|-----------
+|**`file`**|
+|**`inputstream`** |
