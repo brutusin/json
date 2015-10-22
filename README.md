@@ -51,7 +51,7 @@ A JSON schema ([specifications](http://json-schema.org/)) is a JSON document tha
 
 Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (`getSchema(Class<T> clazz)`).
 
-This module uses the JSON schema extensions defined in http://brutusin.org/json/json-schema-spec.
+This module adheres to the JSON schema specification defined in http://brutusin.org/json/json-schema-spec
 
 ####Validation
 Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
