@@ -1,6 +1,6 @@
 # `"$schema": "http://brutusin.org/json/json-schema-spec"`
 
-This document defines some extensions to the http://json-schema.org/draft-03/schema JSON schema version used by Brutusin modules 
+This document defines some extensions to the http://json-schema.org/draft-03/schema JSON schema specification used by Brutusin modules 
 
 ##Path expressions
 Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. 
