@@ -54,19 +54,8 @@ Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin
 Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
 
 ###Path expressions
-Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. 
 
-This module defines its own expression semantics, supporting data and schema projections (wildcard expressions evaluating to multiple nodes), and also keeping explicit information of the schema structure, being useful to validate that a reusable expression is applied to a node of the same structure that the original one (this is the main point for not adopting [JsonPath](https://github.com/jayway/JsonPath) semantics).
-
-| Operator                  | Applied to JsonNode  | Applied to JsonSchema
-| :------------------------ | :------------------- |:-------------------- |
-| `$`                       | The root node        | Schema of root node |
-| `.<name>`                 | Dot-notated child    | Schema of child node
-| `#`                       | Numeric wildcard. Selects all elements of an array | Schema of the array node
-| `*`                       | String wildcard. Selects all properties of an object | Schema of the object node. Only valid in schemas having additionalProperties
-| `['<name>']` | Bracket-notated child or children | Only valid in schemas having additionalProperties. Otherwise use dot-notation |                                 |
-| `[<number>]` | number-th element in the array                                            |Schema of the element node
-| `[$]` | Last element in the array | Schema of the element node
+See [extension specification](schema.extension.md#path-expressions).
 
 See [ExpressionTest](src/test/java/org/brutusin/json/spi/ExpressionTest.java) for some examples.
 
