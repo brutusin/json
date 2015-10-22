@@ -1,4 +1,6 @@
-This document defines the extensions to the http://json-schema.org/draft-03/schema JSON schema version supported by this module.
+# "$schema":"http://brutusin.org/json"
+
+This document defines some extensions to the http://json-schema.org/draft-03/schema JSON schema version used by Brutusin modules 
 
 ##Path expressions
 Path expressions allow referencing JSON data and schema subparts and traversing the JSON node tree. 
