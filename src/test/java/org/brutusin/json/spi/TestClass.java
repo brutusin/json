@@ -15,6 +15,8 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +28,7 @@ import org.brutusin.json.annotations.JsonProperty;
  *
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-class TestClass {
+public class TestClass {
 
     @JsonProperty(required = true, description = "A string", title = "a title", defaultJsonExp = "3", valuesMethod = "getStringValues")
     private String string;
@@ -41,6 +43,9 @@ class TestClass {
     public void setNonSerializableBoolean(boolean nonSerializableBoolean) {
         this.nonSerializableBoolean = nonSerializableBoolean;
     }
+    
+    private InputStream inputStream;
+    private File[] files;
 
     @IndexableProperty
     @DependentProperty(dependsOn = {"bolArr", "string"})
@@ -50,6 +55,14 @@ class TestClass {
     @JsonProperty(defaultJsonExp = "[true,true]")
     private boolean[] bolArr;
 
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+    
     private Map<String, Boolean> booleanMap;
 
     private TestClass2 tc;
@@ -104,6 +117,14 @@ class TestClass {
 
     public void setTc(TestClass2 tc) {
         this.tc = tc;
+    }
+
+    public File[] getFiles() {
+        return files;
+    }
+
+    public void setFiles(File[] files) {
+        this.files = files;
     }
 
     private class TestClass2 {

@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.InputStream;
 import java.util.Iterator;
 
 /**
@@ -24,7 +25,6 @@ import java.util.Iterator;
 public interface JsonNode {
 
     public enum Type {
-
         OBJECT,
         ARRAY,
         BOOLEAN,
@@ -34,12 +34,14 @@ public interface JsonNode {
         STRING,
         ANY
     }
-
+    
     public Type getNodeType();
 
     public Boolean asBoolean();
 
     public Integer asInteger();
+    
+    public InputStream asStream();
 
     public Long asLong();
 
@@ -48,6 +50,8 @@ public interface JsonNode {
     public String asString();
 
     public int getSize();
+    
+    public JsonNode getParentNode();
 
     public JsonNode get(int i);
 

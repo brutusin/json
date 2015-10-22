@@ -71,15 +71,6 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec {
         }
     }
 
-    @Override
-    public <T> T load(JsonNode node, Class<T> clazz) {
-        try {
-            return parse(node.toString(), clazz);
-        } catch (ParseException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-
     public final Expression compile(String expression) {
         return Expression.compile(expression);
     }

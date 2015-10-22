@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.util;
 
+import java.io.InputStream;
 import java.util.Iterator;
 import org.brutusin.json.ParseException;
 import org.brutusin.json.spi.JsonCodec;
@@ -44,6 +45,11 @@ public final class LazyJsonNode implements JsonNode {
     }
 
     @Override
+    public InputStream asStream() {
+        return getJsonNode().asStream();
+    }
+
+    @Override
     public Integer asInteger() {
         return getJsonNode().asInteger();
     }
@@ -51,6 +57,11 @@ public final class LazyJsonNode implements JsonNode {
     @Override
     public Long asLong() {
         return getJsonNode().asLong();
+    }
+
+     @Override
+    public JsonNode getParentNode() {
+        return getJsonNode().getParentNode();
     }
 
     @Override

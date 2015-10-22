@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -70,5 +71,20 @@ public abstract class DataCodecTest {
         String json = JsonCodec.getInstance().transform(instance);
         System.out.println(json);
         assert(!json.contains("nonSerializable"));
+    }
+    
+    @Test
+    public void testInputStream() throws Exception {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("META-INF/services/org.brutusin.json.spi.JsonCodec");
+        TestClass instance = new TestClass();
+        String json = JsonCodec.getInstance().transform(instance);
+        assertTrue(!json.contains("\"inputStream\""));
+        instance.setInputStream(is);
+        json = JsonCodec.getInstance().transform(instance);
+        assertTrue(json.contains("\"inputStream\":\"#1#"));
+        JsonNode node = JsonCodec.getInstance().toJsonNode(instance);
+        assertEquals(node.get("inputStream").asStream(), is);
+        TestClass instance2 = JsonCodec.getInstance().load(node, TestClass.class);
+        assertEquals(instance.getInputStream(), instance2.getInputStream());
     }
 }

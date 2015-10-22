@@ -60,59 +60,73 @@ public abstract class SchemaCodecTest {
         assertTrue(schemaStr.contains("\"default\":[true,true]"));
         assertTrue(schemaStr.contains("\"enum\":[\"aaa\",\"bbb\"]"));
         assertTrue(schemaStr.contains("\"dependsOn\":[\"bolArr\",\"string\"]"));
-        
+
         System.out.println(schemaStr);
     }
-    
+
     @Test
     public void testIndexablePropertyAnnotationSupport() {
         String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
         assertTrue(schemaStr.contains("\"index\":\"index\""));
     }
-    
+
     @Test
     public void testAdditionalPropertiesSupport() {
         String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
         assertTrue(schemaStr.contains("\"additionalProperties\":{\"type\":\"boolean\"}"));
     }
-    
+
     @Test
-    public void testNotSchemaReferences() throws ParseException{
+    public void testNotSchemaReferences() throws ParseException {
         String bSchema = JsonCodec.getInstance().getSchemaString(B.class);
         String aSchema = JsonCodec.getInstance().getSchemaString(A.class);
         JsonNode bNode = JsonCodec.getInstance().parse(bSchema);
         assertTrue(aSchema.contains(bNode.get("type").toString()));
     }
 
+    @Test
+    public void testFormatSupport() {
+        String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
+        assertTrue(schemaStr.contains("\"format\":\"file\""));
+        assertTrue(schemaStr.contains("\"format\":\"inputstream\""));
+    }
+
     class A {
+
         B b;
 
         public B getB() {
             return b;
         }
+
         public void setB(B b) {
             this.b = b;
         }
     }
 
     class B {
+
         C c;
+
         public C getC() {
             return c;
         }
+
         public void setC(C c) {
             this.c = c;
         }
     }
 
     class C {
+
         String name;
+
         public String getName() {
             return name;
         }
+
         public void setName(String name) {
             this.name = name;
         }
     }
 }
-

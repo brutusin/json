@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -209,7 +210,7 @@ public class Expression {
         visitNode("", new LinkedList(this.elements), node, visitor);
 
         if (nodes.size() > 1) {
-            return new JsonArrayNode(nodes);
+            return new JsonArrayNode(nodes, null);
         }
         if (!multivalued) {
             if (nodes.size() > 1) {
@@ -220,7 +221,7 @@ public class Expression {
                 return null;
             }
         } else {
-            return new JsonArrayNode(nodes);
+            return new JsonArrayNode(nodes, null);
         }
     }
 
@@ -415,8 +416,9 @@ public class Expression {
 
         private final List<JsonNode> children;
         private final String payload;
+        private final JsonNode parentNode;
 
-        public JsonArrayNode(List<JsonNode> children) {
+        public JsonArrayNode(List<JsonNode> children, JsonNode parentNode) {
             this.children = children;
             StringBuilder sb = new StringBuilder("[");
             for (int i = 0; i < children.size(); i++) {
@@ -428,6 +430,12 @@ public class Expression {
             }
             sb.append("]");
             this.payload = sb.toString();
+            this.parentNode = parentNode;
+        }
+
+        @Override
+        public JsonNode getParentNode() {
+            return parentNode;
         }
 
         @Override
@@ -452,6 +460,11 @@ public class Expression {
 
         @Override
         public Double asDouble() {
+            throw new UnsupportedOperationException("Node is of type " + getNodeType());
+        }
+
+        @Override
+        public InputStream asStream() {
             throw new UnsupportedOperationException("Node is of type " + getNodeType());
         }
 

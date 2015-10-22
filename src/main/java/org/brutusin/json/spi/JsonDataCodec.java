@@ -15,6 +15,8 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.InputStream;
+import java.util.Map;
 import org.brutusin.json.ParseException;
 
 /**
@@ -26,11 +28,17 @@ public interface JsonDataCodec {
 
     public <T> T parse(String json, Class<T> clazz) throws ParseException;
 
-    public <T> T load(JsonNode node, Class<T> clazz);
+    public <T> T parse(String json, Class<T> clazz, Map<String, InputStream> streams) throws ParseException;
 
     public JsonNode parse(String json) throws ParseException;
 
+    public JsonNode parse(String json, Map<String, InputStream> streams) throws ParseException;
+
+    public <T> T load(JsonNode node, Class<T> clazz);
+
     public String transform(Object o);
+
+    public JsonNode toJsonNode(Object o);
 
     public String prettyPrint(String json) throws ParseException;
 }
