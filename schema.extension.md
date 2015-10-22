@@ -19,7 +19,7 @@ This document defines new expression semantics, supporting data and schema proje
 |Property|Supported values| Description
 |--------|----------------|------------
 |**`index`**|[`"index"`,`"facet"`]|
-|**`dependsOn`**|array of strings| The schema of this 
+|**`dependsOn`**|array of [path expressions](#path-expressions) strings| Used to state that this schema is dynamic and depends on the values of the instance document in a certain set of subparts represented by path expressions.
 ## Additional formats for `string` schemas:
 |Format value|Description
 |--------|-----------
