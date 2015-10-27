@@ -14,7 +14,7 @@ This module defines the general contract required to any implementing JSON servi
       - [Data validation](#data-validation)
     - [Path expressions](#path-expressions)
   - [Java Annotations](#java-annotations)
-  - [Streaming API](#streaming-API)
+  - [Streaming API](#streaming-api)
   - [Service providers](#service-providers)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
     - [Reference implementation](#reference-implementation)
