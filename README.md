@@ -14,6 +14,7 @@ This module defines the general contract required to any implementing JSON servi
       - [Data validation](#data-validation)
     - [Path expressions](#path-expressions)
   - [Java Annotations](#java-annotations)
+  - [Streaming API](#streaming-API)
   - [Service providers](#service-providers)
     - [JUnit tests for implementing providers](#junit-tests-for-implementing-providers)
     - [Reference implementation](#reference-implementation)
@@ -73,6 +74,7 @@ The following annotations can be used to customize schema generation, and must b
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 * [`@DependentProperty`](src/main/java/org/brutusin/json/annotations/DependentProperty.java). Adds custom `"dependsOn":<property name array>` properties to the schema generated.
 
+## Streaming API
 ## Service Providers
 Service providers are modules implementing this SPI and registering themselves via the [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) standard facility. 
 ### JUnit tests for implementing providers
