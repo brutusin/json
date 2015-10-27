@@ -15,24 +15,16 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.InputStream;
+import java.util.Map;
+import org.brutusin.commons.Pair;
 import org.brutusin.json.ParseException;
 
 /**
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-public interface JsonDataCodec {
-
-    public String quoteAsUTF8(String s);
-
-    public <T> T parse(String json, Class<T> clazz) throws ParseException;
-
-    public JsonNode parse(String json) throws ParseException;
-
-    public <T> T load(JsonNode node, Class<T> clazz);
-
-    public String transform(Object o);
-
-    public JsonNode toJsonNode(Object o);
-
-    public String prettyPrint(String json) throws ParseException;
+public interface JsonStreamCodec {
+    
+    public <T> Pair<T, Integer> parse(String json, Class<T> clazz, Map<String, InputStream> streams) throws ParseException;
+    public JsonNode parse(String json, Map<String, InputStream> streams) throws ParseException;
 }

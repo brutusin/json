@@ -29,5 +29,7 @@ public interface JsonSchemaCodec {
     public String getSchemaString(Class<?> clazz, String title, String description);
 
     public JsonSchema parseSchema(String json) throws ParseException;
+    
+    public void registerStringFormat(Class clazz, String format);
 
 }

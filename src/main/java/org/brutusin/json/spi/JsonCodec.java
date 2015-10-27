@@ -26,7 +26,7 @@ import org.brutusin.json.ParseException;
  *
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
-public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec {
+public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonStreamCodec {
 
     private static JsonCodec instance;
 

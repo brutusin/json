@@ -18,6 +18,7 @@ package org.brutusin.json.spi;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import org.brutusin.commons.Pair;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -91,7 +92,9 @@ public abstract class DataCodecTest {
         streams.put(node.get("inputStream").asString(), is);
         JsonNode node2 = JsonCodec.getInstance().parse(node.toString(), streams);
         assertEquals(node2.get("inputStream").asStream(), is);
-        TestClass instance3 = JsonCodec.getInstance().parse(node.toString(), TestClass.class, streams);
+        Pair<TestClass, Integer> streamParsing = JsonCodec.getInstance().parse(node.toString(), TestClass.class, streams);
+        TestClass instance3 = streamParsing.getElement1();
         assertEquals(instance3.getInputStream(), instance3.getInputStream());
+        assertTrue(streamParsing.getElement2().equals(1));
     }
 }
