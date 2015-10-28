@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import org.brutusin.commons.io.MetaDataInputStream;
 import org.brutusin.json.annotations.DependentProperty;
 import org.brutusin.json.annotations.IndexableProperty;
 import org.brutusin.json.annotations.JsonProperty;
@@ -45,6 +46,8 @@ public class TestClass {
     }
     
     private InputStream inputStream;
+    private MetaDataInputStream metaDataInputStream;
+    
     private File[] files;
 
     @IndexableProperty
@@ -95,6 +98,14 @@ public class TestClass {
         this.aint = aint;
     }
 
+    public MetaDataInputStream getMetaDataInputStream() {
+        return metaDataInputStream;
+    }
+
+    public void setMetaDataInputStream(MetaDataInputStream metaDataInputStream) {
+        this.metaDataInputStream = metaDataInputStream;
+    }
+    
     public String getString() {
         return string;
     }

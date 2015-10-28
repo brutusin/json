@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import org.brutusin.commons.Pair;
+import org.brutusin.commons.io.MetaDataInputStream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -95,6 +96,29 @@ public abstract class DataCodecTest {
         Pair<TestClass, Integer> streamParsing = JsonCodec.getInstance().parse(node.toString(), TestClass.class, streams);
         TestClass instance3 = streamParsing.getElement1();
         assertEquals(instance3.getInputStream(), instance3.getInputStream());
+        assertTrue(streamParsing.getElement2().equals(1));
+    }
+    
+    @Test
+    public void testMetadataInputStream() throws Exception {
+        MetaDataInputStream mis = new MetaDataInputStream(getClass().getClassLoader().getResourceAsStream("META-INF/services/org.brutusin.json.spi.JsonCodec"), null, null, Long.MIN_VALUE);
+        TestClass instance = new TestClass();
+        String json = JsonCodec.getInstance().transform(instance);
+        assertTrue(!json.contains("\"metaDataInputStream\""));
+        instance.setMetaDataInputStream(mis);
+        json = JsonCodec.getInstance().transform(instance);
+        assertTrue(json.contains("\"metaDataInputStream\":\"#1#"));
+        JsonNode node = JsonCodec.getInstance().toJsonNode(instance);
+        assertEquals(node.get("metaDataInputStream").asStream(), mis);
+        TestClass instance2 = JsonCodec.getInstance().load(node, TestClass.class);
+        assertEquals(instance.getMetaDataInputStream(), instance2.getMetaDataInputStream());
+        Map<String, InputStream> streams = new HashMap();
+        streams.put(node.get("metaDataInputStream").asString(), mis);
+        JsonNode node2 = JsonCodec.getInstance().parse(node.toString(), streams);
+        assertEquals(node2.get("metaDataInputStream").asStream(), mis);
+        Pair<TestClass, Integer> streamParsing = JsonCodec.getInstance().parse(node.toString(), TestClass.class, streams);
+        TestClass instance3 = streamParsing.getElement1();
+        assertEquals(instance3.getMetaDataInputStream(), instance3.getMetaDataInputStream());
         assertTrue(streamParsing.getElement2().equals(1));
     }
 }
