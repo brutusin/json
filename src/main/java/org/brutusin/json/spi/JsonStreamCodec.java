@@ -25,6 +25,23 @@ import org.brutusin.json.ParseException;
  */
 public interface JsonStreamCodec {
     
+    /**
+     * Returns an instance of clazz represented by the input json, and also the number of InputStream and MetaDataInputStream referenced by the json data
+     * @param <T>
+     * @param json
+     * @param clazz
+     * @param streams stream attachments 
+     * @return
+     * @throws ParseException 
+     */
     public <T> Pair<T, Integer> parse(String json, Class<T> clazz, Map<String, InputStream> streams) throws ParseException;
+    
+    /**
+     * Returns a generic json representation of the json string.
+     * @param json
+     * @param streams stream attachments accessible as JsonNode.asStream()
+     * @return
+     * @throws ParseException 
+     */
     public JsonNode parse(String json, Map<String, InputStream> streams) throws ParseException;
 }
