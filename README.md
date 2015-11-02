@@ -75,6 +75,9 @@ The following annotations can be used to customize schema generation, and must b
 * [`@DependentProperty`](src/main/java/org/brutusin/json/annotations/DependentProperty.java). Adds custom `"dependsOn":<property name array>` properties to the schema generated.
 
 ## Streaming API
+This SPI supports binary attachments in JSON data, a feature that enables serialization/deserialization of properties of type `InputStream` or [`MetaDataInputStream`](https://github.com/brutusin/commons/blob/master/src/main/java/org/brutusin/commons/io/MetaDataInputStream.java).
+[JsonStreamCodec][src/main/java/org/brutusin/json/spi/JsonStreamCodec.java] declares the SPI functionality related with binary attachments.
+
 ## Service Providers
 Service providers are modules implementing this SPI and registering themselves via the [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) standard facility. 
 ### JUnit tests for implementing providers
