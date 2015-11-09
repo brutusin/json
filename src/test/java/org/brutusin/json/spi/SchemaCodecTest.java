@@ -75,6 +75,12 @@ public abstract class SchemaCodecTest {
         String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
         assertTrue(schemaStr.contains("\"additionalProperties\":{\"type\":\"boolean\"}"));
     }
+    
+     @Test
+    public void testEnumSupport() {
+        String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
+        assertTrue(schemaStr.contains("\"enum\":[\"mode1\",\"mode2\"]"));
+    }
 
     @Test
     public void testNotSchemaReferences() throws ParseException {

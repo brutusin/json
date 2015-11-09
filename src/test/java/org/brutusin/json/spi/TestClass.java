@@ -31,9 +31,16 @@ import org.brutusin.json.annotations.JsonProperty;
  */
 public class TestClass {
 
+    public enum Mode {
+        mode1,
+        mode2;
+    }
+    
     @JsonProperty(required = true, description = "A string", title = "a title", defaultJsonExp = "3", valuesMethod = "getStringValues")
     private String string;
     
+    private Mode mode;
+
     private transient String nonSerializableString = "nonSerializableString";
     private transient boolean nonSerializableBoolean = true;
 
@@ -44,10 +51,10 @@ public class TestClass {
     public void setNonSerializableBoolean(boolean nonSerializableBoolean) {
         this.nonSerializableBoolean = nonSerializableBoolean;
     }
-    
+
     private InputStream inputStream;
     private MetaDataInputStream metaDataInputStream;
-    
+
     private File[] files;
 
     @IndexableProperty
@@ -62,10 +69,18 @@ public class TestClass {
         return inputStream;
     }
 
+    public Mode getMode() {
+        return mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
     public void setInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
     }
-    
+
     private Map<String, Boolean> booleanMap;
 
     private TestClass2 tc;
@@ -81,7 +96,7 @@ public class TestClass {
     public void setNonSerializableString(String nonSerializableString) {
         this.nonSerializableString = nonSerializableString;
     }
-    
+
     public Map<String, Boolean> getBooleanMap() {
         return booleanMap;
     }
@@ -105,7 +120,7 @@ public class TestClass {
     public void setMetaDataInputStream(MetaDataInputStream metaDataInputStream) {
         this.metaDataInputStream = metaDataInputStream;
     }
-    
+
     public String getString() {
         return string;
     }
