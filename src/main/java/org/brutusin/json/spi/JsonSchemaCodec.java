@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.spi;
 
+import java.lang.reflect.Type;
 import org.brutusin.json.ParseException;
 
 /**
@@ -22,11 +23,11 @@ import org.brutusin.json.ParseException;
  */
 public interface JsonSchemaCodec {
 
-    public JsonSchema getSchema(Class clazz);
+    public JsonSchema getSchema(Type type);
 
-    public String getSchemaString(Class clazz);
+    public String getSchemaString(Type type);
 
-    public String getSchemaString(Class<?> clazz, String title, String description);
+    public String getSchemaString(Type type, String title, String description);
 
     public JsonSchema parseSchema(String json) throws ParseException;
     

@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.spi;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -47,8 +48,8 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonS
     }
 
     @Override
-    public final String getSchemaString(Class<?> clazz, String title, String description) {
-        String ret = getSchemaString(clazz);
+    public final String getSchemaString(Type type, String title, String description) {
+        String ret = getSchemaString(type);
         if (ret != null && (title != null || description != null)) {
             StringBuilder sb = new StringBuilder(ret.trim());
             if (description != null) {
@@ -63,9 +64,9 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonS
     }
 
     @Override
-    public JsonSchema getSchema(Class clazz) {
+    public JsonSchema getSchema(Type type) {
         try {
-            return parseSchema(getSchemaString(clazz));
+            return parseSchema(getSchemaString(type));
         } catch (ParseException ex) {
             throw new RuntimeException(ex);
         }
