@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ServiceLoader;
+import java.util.concurrent.ConcurrentHashMap;
 import org.brutusin.json.ParseException;
 
 /**
@@ -30,6 +31,7 @@ import org.brutusin.json.ParseException;
 public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonStreamCodec {
 
     private static JsonCodec instance;
+    private final ConcurrentHashMap<Type, JsonSchema> schemaCache = new ConcurrentHashMap();
 
     static {
         ServiceLoader<JsonCodec> sl = ServiceLoader.load(JsonCodec.class);
@@ -66,7 +68,12 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonS
     @Override
     public JsonSchema getSchema(Type type) {
         try {
-            return parseSchema(getSchemaString(type));
+            JsonSchema ret = schemaCache.get(type);
+            if (ret == null) {
+                ret = parseSchema(getSchemaString(type));
+                schemaCache.putIfAbsent(type, ret);
+            }
+            return ret;
         } catch (ParseException ex) {
             throw new RuntimeException(ex);
         }

@@ -79,6 +79,7 @@ public abstract class SchemaCodecTest {
      @Test
     public void testEnumSupport() {
         String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
+         System.out.println(schemaStr);
         assertTrue(schemaStr.contains("\"enum\":[\"mode1\",\"mode2\"]"));
     }
 
