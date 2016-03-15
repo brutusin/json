@@ -31,7 +31,7 @@ import org.brutusin.json.annotations.JsonProperty;
  */
 public class TestClass {
 
-    public enum Mode {
+    public static enum Mode {
         mode1,
         mode2;
     }

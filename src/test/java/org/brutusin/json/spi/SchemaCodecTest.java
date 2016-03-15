@@ -76,9 +76,16 @@ public abstract class SchemaCodecTest {
         assertTrue(schemaStr.contains("\"additionalProperties\":{\"type\":\"boolean\"}"));
     }
     
-     @Test
-    public void testEnumSupport() {
+    @Test
+    public void testInnerEnumSupport() {
         String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.class);
+         System.out.println(schemaStr);
+        assertTrue(schemaStr.contains("\"enum\":[\"mode1\",\"mode2\"]"));
+    }
+    
+    @Test
+    public void testEnumSupport() {
+        String schemaStr = JsonCodec.getInstance().getSchemaString(TestClass.Mode.class);
          System.out.println(schemaStr);
         assertTrue(schemaStr.contains("\"enum\":[\"mode1\",\"mode2\"]"));
     }
