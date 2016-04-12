@@ -15,13 +15,18 @@
  */
 package org.brutusin.json.spi;
 
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.brutusin.json.ParseException;
+import org.brutusin.json.util.JsonNodeVisitor;
 
 /**
  * Decouples application logic from JSON parsing providers.
@@ -29,10 +34,10 @@ import org.brutusin.json.ParseException;
  * @author Ignacio del Valle Alles idelvall@brutusin.org
  */
 public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonStreamCodec {
-
+    
     private static JsonCodec instance;
     private final ConcurrentHashMap<Type, JsonSchema> schemaCache = new ConcurrentHashMap();
-
+    
     static {
         ServiceLoader<JsonCodec> sl = ServiceLoader.load(JsonCodec.class);
         Iterator<JsonCodec> it = sl.iterator();
@@ -48,7 +53,7 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonS
             instance = instances.get(0);
         }
     }
-
+    
     @Override
     public final String getSchemaString(Type type, String title, String description) {
         String ret = getSchemaString(type);
@@ -64,7 +69,7 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonS
         }
         return ret;
     }
-
+    
     @Override
     public JsonSchema getSchema(Type type) {
         try {
@@ -78,11 +83,58 @@ public abstract class JsonCodec implements JsonDataCodec, JsonSchemaCodec, JsonS
             throw new RuntimeException(ex);
         }
     }
-
+    
+    @Override
+    public Map<String, InputStream> getStreams(JsonNode node) {
+        final Map<String, InputStream> map = new HashMap<String, InputStream>();
+        visit("$", node, new JsonNodeVisitor() {
+            public void visit(String name, JsonNode node) {
+                if (node.asStream() != null) {
+                    map.put(name, node.asStream());
+                }
+            }
+        });
+        return map;
+    }
+    
+    @Override
+    public Integer getReferencedStreamCount(JsonNode node, final JsonSchema schema) {
+        final AtomicInteger counter = new AtomicInteger();
+        visit("$", node, new JsonNodeVisitor() {
+            public void visit(String name, JsonNode node) {
+                Expression exp = compile(name);
+                JsonSchema sch = exp.projectSchema(schema);
+                if (sch.getSchemaType() == JsonNode.Type.STRING) {
+                    JsonNode format = sch.get("format");
+                    if (format != null && "inputstream".equals(format.asString())) {
+                        counter.incrementAndGet();
+                    }
+                }
+            }
+        });
+        return counter.get();
+    }
+    
+    private static void visit(String name, JsonNode node, JsonNodeVisitor visitor) {
+        visitor.visit(name, node);
+        if (node.getNodeType() == JsonNode.Type.OBJECT) {
+            Iterator<String> properties = node.getProperties();
+            while (properties.hasNext()) {
+                String prop = properties.next();
+                visit(name + "." + prop, node.get(prop), visitor);
+            }
+        } else if (node.getNodeType() == JsonNode.Type.ARRAY) {
+            int size = node.getSize();
+            for (int i = 0; i < size; i++) {
+                visit(name + "[" + i + "]", node.get(i), visitor);
+            }
+        }
+    }
+    
     public final Expression compile(String expression) {
         return Expression.compile(expression);
     }
-
+    
     public static JsonCodec getInstance() {
         return instance;
     }

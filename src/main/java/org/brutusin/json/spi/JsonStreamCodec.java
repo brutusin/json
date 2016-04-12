@@ -17,7 +17,6 @@ package org.brutusin.json.spi;
 
 import java.io.InputStream;
 import java.util.Map;
-import org.brutusin.commons.Pair;
 import org.brutusin.json.ParseException;
 
 /**
@@ -26,15 +25,12 @@ import org.brutusin.json.ParseException;
 public interface JsonStreamCodec {
     
     /**
-     * Returns an instance of clazz represented by the input json, and also the number of InputStream and MetaDataInputStream referenced by the json data
-     * @param <T>
-     * @param json
-     * @param clazz
-     * @param streams stream attachments 
-     * @return
-     * @throws ParseException 
+     * Returns the number of InputStream and MetaDataInputStream referenced by the json node
+     * @param node
+     * @param schema
+     * @return 
      */
-    public <T> Pair<T, Integer> parse(String json, Class<T> clazz, Map<String, InputStream> streams) throws ParseException;
+    public Integer getReferencedStreamCount(JsonNode node, JsonSchema schema);
     
     /**
      * Returns a generic json representation of the json string.
@@ -44,4 +40,6 @@ public interface JsonStreamCodec {
      * @throws ParseException 
      */
     public JsonNode parse(String json, Map<String, InputStream> streams) throws ParseException;
+    
+    public Map<String, InputStream> getStreams(JsonNode node);
 }

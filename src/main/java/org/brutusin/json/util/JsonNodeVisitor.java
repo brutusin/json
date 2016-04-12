@@ -18,8 +18,9 @@ package org.brutusin.json.util;
 import org.brutusin.json.spi.JsonNode;
 
 /**
- *
+ * 
  * @author Ignacio del Valle Alles idelvall@brutusin.org
+ * @param <E> 
  */
 public interface JsonNodeVisitor<E extends JsonNode> {
 

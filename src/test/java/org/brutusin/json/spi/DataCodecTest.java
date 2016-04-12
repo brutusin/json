@@ -93,10 +93,10 @@ public abstract class DataCodecTest {
         streams.put(node.get("inputStream").asString(), is);
         JsonNode node2 = JsonCodec.getInstance().parse(node.toString(), streams);
         assertEquals(node2.get("inputStream").asStream(), is);
-        Pair<TestClass, Integer> streamParsing = JsonCodec.getInstance().parse(node.toString(), TestClass.class, streams);
-        TestClass instance3 = streamParsing.getElement1();
-        assertEquals(instance3.getInputStream(), instance3.getInputStream());
-        assertTrue(streamParsing.getElement2().equals(1));
+        JsonNode node3 = JsonCodec.getInstance().parse(node.toString(), streams);
+        TestClass instance3 = JsonCodec.getInstance().load(node3,TestClass.class);
+        assertEquals(instance.getInputStream(), instance3.getInputStream());
+        assertTrue(JsonCodec.getInstance().getReferencedStreamCount(node, JsonCodec.getInstance().getSchema(TestClass.class)).equals(1));
     }
     
     @Test
@@ -116,9 +116,9 @@ public abstract class DataCodecTest {
         streams.put(node.get("metaDataInputStream").asString(), mis);
         JsonNode node2 = JsonCodec.getInstance().parse(node.toString(), streams);
         assertEquals(node2.get("metaDataInputStream").asStream(), mis);
-        Pair<TestClass, Integer> streamParsing = JsonCodec.getInstance().parse(node.toString(), TestClass.class, streams);
-        TestClass instance3 = streamParsing.getElement1();
-        assertEquals(instance3.getMetaDataInputStream(), instance3.getMetaDataInputStream());
-        assertTrue(streamParsing.getElement2().equals(1));
+        JsonNode node3 = JsonCodec.getInstance().parse(node.toString(), streams);
+        TestClass instance3 = JsonCodec.getInstance().load(node3,TestClass.class);
+        assertEquals(instance.getInputStream(), instance3.getInputStream());
+        assertTrue(JsonCodec.getInstance().getReferencedStreamCount(node, JsonCodec.getInstance().getSchema(TestClass.class)).equals(1));
     }
 }
