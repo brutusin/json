@@ -15,6 +15,7 @@
  */
 package org.brutusin.json.spi;
 
+import java.lang.reflect.Type;
 import org.brutusin.json.ParseException;
 
 /**
@@ -25,10 +26,14 @@ public interface JsonDataCodec {
     public String quoteAsUTF8(String s);
 
     public <T> T parse(String json, Class<T> clazz) throws ParseException;
+   
+    public Object parse(String json, Type type) throws ParseException;
 
     public JsonNode parse(String json) throws ParseException;
 
     public <T> T load(JsonNode node, Class<T> clazz);
+    
+    public Object load(JsonNode node, Type type);
 
     public String transform(Object o);
 
