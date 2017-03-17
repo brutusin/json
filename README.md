@@ -1,4 +1,4 @@
-#org.brutusin:json [![Build Status](https://api.travis-ci.org/brutusin/json.svg?branch=master)](https://travis-ci.org/brutusin/json) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/)
+# org.brutusin:json [![Build Status](https://api.travis-ci.org/brutusin/json.svg?branch=master)](https://travis-ci.org/brutusin/json) [![Maven Central Latest Version](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.brutusin/json/)
 
 `org.brutusin:json` is a service provider interface ([SPI](http://en.wikipedia.org/wiki/Service_provider_interface)) that aggregates all the JSON-related functionality needed by the rest of Brutusin modules.
 
@@ -24,7 +24,7 @@ This module defines the general contract required to any implementing JSON servi
   - [Authors](#authors)
   - [License](#license)
   
-##Maven dependency 
+## Maven dependency 
 ```xml
 <dependency>
     <groupId>org.brutusin</groupId>
@@ -37,7 +37,7 @@ Click [here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.brutusin%22%2
 
 If you are not using maven and need help you can ask [here](https://github.com/brutusin/json/issues).
 
-##SPI
+## SPI
 [JsonCodec](src/main/java/org/brutusin/json/spi/JsonCodec.java) is the single entry point to the framework. It defines a SPI (service provider interface) that is implemented by pluggable service providers. Clients of the service make use of it by calling:
 ```java
 JsonCodec.getInstance()
@@ -45,19 +45,21 @@ JsonCodec.getInstance()
 `JsonCodec` provides three types of operations: Data operations (inherited from [JsonDataCodec](src/main/java/org/brutusin/json/spi/JsonDataCodec.java)), schema operations (inherited from [JsonSchemaCodec](src/main/java/org/brutusin/json/spi/JsonSchemaCodec.java)) and path expression operations (via `compile(String expression)`)
 
 ![Class diagram](docs/class-model.png)
-###Data
+
+### Data
 Data methods declared in `JsonDataCodec` offer **Object/JSON binding** (get JSON representations from objects and object tree instantiation from JSON data) and a generic API to interact with JSON data in a generic way ([JsonNode](src/main/java/org/brutusin/json/spi/JsonNode.java)).
-###JSON Schema
+
+### JSON Schema
 A JSON schema ([specifications](http://json-schema.org/)) is a JSON document that describes the structure of other JSON documents. 
 
 Schemas are represented by the interface [JsonSchema](src/main/java/org/brutusin/json/spi/JsonSchema.java), and instantiated by the methods in `JsonSchemaCodec`, either by parsing the JSON Schema document (`parseSchema(String json)`) and by reflection from a `Class` instance (`getSchema(Class<T> clazz)`).
 
 This module adheres to the JSON schema specification defined in http://brutusin.org/json/json-schema-spec
 
-####Validation
+#### Validation
 Schemas are useful both for describing the structure and for validating `JsonSchema.validate(JsonNode node)` that JSON data complies the constraints imposed by them.
 
-###Path expressions
+### Path expressions
 
 See [extension specification](schema.extension.md#path-expressions).
 
@@ -67,10 +69,10 @@ See [ExpressionTest](src/test/java/org/brutusin/json/spi/ExpressionTest.java) fo
 ### Schema generation annotations
 The following annotations can be used to customize schema generation, and must be supported by all providers:
 
-####Standard schema properties
+#### Standard schema properties
 * [`@JsonProperty`](src/main/java/org/brutusin/json/annotations/JsonProperty.java). Lets specify standard schema properties like `required`, `default`, `enum`, `title`, `description`,...
 
-####Custom schema properties
+#### Custom schema properties
 * [`@IndexableProperty`](src/main/java/org/brutusin/json/annotations/IndexableProperty.java). Adds custom `"index":"index"` or `"index":"facet"` properties to the schema generated.
 * [`@DependentProperty`](src/main/java/org/brutusin/json/annotations/DependentProperty.java). Adds custom `"dependsOn":<property name array>` properties to the schema generated.
 
@@ -98,14 +100,14 @@ and
 ### Reference implementation
 See [org.brutusin:json-provider](https://github.com/brutusin/json-provider) for a reference implementation.
 
-##ToDos
+## ToDos
 * Standard annotations also for data binding (not only for schema customization), supporting property ordering, ignoring properties...
 * Since annotation inheritance is not allowed in java, introduce some mechanism for schema extension (allowing non-standard schema properties) to be used by the service providers. This also would help to move `@IndexableProperty` (aimed at being used by `org.brutuisn:flea-db`) and `@DependentProperty` out of this module.
 * Path expressions: Add more features similar to those in [XPath](https://en.wikipedia.org/wiki/XPath) like: 
   * Filters
   * Functions 
 
-##See also
+## See also
 * [ServiceLoader](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details.
 * [org.brutusin:json-provider](https://github.com/brutusin/json-provider), the default JSON service provider.
 
@@ -118,5 +120,5 @@ https://github.com/brutusin/json/issues
 
 Contributions are always welcome and greatly appreciated!
 
-##License
+## License
 Apache License, Version 2.0
